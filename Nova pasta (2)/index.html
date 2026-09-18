@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cicly | Carrinho</title>
+    <!-- Fontes Google -->
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <!-- Arquivo de Estilos Separado -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- NAVBAR PRINCIPAL -->
+    <header>
+        <div class="logo-container">
+            <h1 class="brand-logo">cicly🎔</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">Início</a></li>
+                <li><a href="#">Produtos</a></li>
+                <li><a href="#">Categorias</a></li>
+                <li><a href="#">Sobre nós</a></li>
+                <li><a href="#">Contato</a></li>
+            </ul>
+        </nav>
+        <div class="search-bar-container">
+            <input type="text" placeholder="O que você procura?">
+        </div>
+        <div class="header-actions">
+            <span>👤</span>
+            <span>🎔</span>
+            <div class="cart-icon-container">
+                <span>🛒</span>
+                <div class="cart-badge" id="nav-cart-count">5</div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- CABEÇALHO DO CARRINHO -->
+        <div class="carrinho-header">
+            <h2 class="carrinho-title">Meu carrinho 🎔</h2>
+            <a href="#" class="continue-link">Continuar comprando →</a>
+        </div>
+
+        <!-- LAYOUT EM GRID: PRODUTOS VS RESUMO -->
+        <div class="carrinho-layout">
+            
+            <!-- COLUNA ESQUERDA: LISTA DE PRODUTOS -->
+            <div class="produtos-coluna">
+                <div class="tabela-header">
+                    <div>Produto</div>
+                    <div>Quantidade</div>
+                    <div style="text-align: right; padding-right: 35px;">Preço</div>
+                </div>
+
+                <!-- Os itens do carrinho serão injetados dinamicamente pelo arquivo JS -->
+                <div id="lista-produtos-carrinho"></div>
+
+                <button class="limpar-carrinho-btn" onclick="limparCarrinho()">🗑 Limpar carrinho</button>
+            </div>
+
+            <!-- COLUNA DIREITA: RESUMO CARD -->
+                       <!-- COLUNA DIREITA: RESUMO CARD COM SUPORTE A CUPOM -->
+                       <div class="resumo-card">
+                        <h3 class="resumo-title">Resumo do pedido</h3>
+                        
+                        <div class="resumo-linha">
+                            <span>Subtotal (<span id="resumo-qtd-itens">5</span> produtos)</span>
+                            <span id="resumo-subtotal">R$ 146,50</span>
+                        </div>
+        
+                        <!-- Nova linha para exibir o desconto caso um cupom seja aplicado -->
+                        <div class="resumo-linha" id="linha-desconto" style="display: none; color: #4CAF50;">
+                            <span>Desconto (Cupom: <span id="nome-cupom-aplicado"></span>)</span>
+                            <span id="valor-desconto">- R$ 0,00</span>
+                        </div>
+                        
+                        <div class="resumo-linha">
+                            <div class="label-frete">
+                                <span>Frete</span>
+                                <span class="sub-label">(para compras acima de R$ 99,00)</span>
+                            </div>
+                            <span class="frete-gratis-status">Grátis</span>
+                        </div>
+        
+                        <div class="total-linha">
+                            <span class="total-label">Total</span>
+                            <span class="total-valor" id="resumo-total">R$ 146,50</span>
+                        </div>
+        
+                        <button class="btn-finalizar">🔒 Finalizar compra ➔</button>
+        
+                        <!-- Área Interativa de Cupom Modificada -->
+                        <div class="cupom-box-container" style="margin-top: 20px;">
+                            <div class="cupom-box" id="gatilho-cupom" onclick="mostrarCampoCupom()" style="cursor: pointer;">
+                                <div style="font-size: 20px;">🎫</div>
+                                <div class="cupom-text">
+                                    <h4>Possui um cupom de desconto?</h4>
+                                    <span>Adicionar cupom 🡪</span>
+                                </div>
+                            </div>
+                            
+                            <div id="campo-cupom-input" style="display: none; background-color: var(--bg-gray); border-radius: 8px; padding: 15px; border: 1px dashed var(--border-color);">
+                                <div style="display: flex; gap: 8px;">
+                                    <input type="text" id="input-codigo-cupom" class="input-cicly" placeholder="Digite o cupom (Ex: CICLY10)" style="padding: 8px 12px; font-size: 12px; height: 35px; text-transform: uppercase;">
+                                    <button onclick="aplicarCupomDesconto()" class="btn-cupom-action" style="background-color: var(--cicly-pink); color: white; border: none; padding: 0 15px; font-size: 11px; height: 35px; border-radius: 8px; font-weight: 600; cursor: pointer;">Aplicar</button>
+                                </div>
+                                <p id="mensagem-cupom" style="font-size: 11px; margin-top: 8px; font-weight: 500;"></p>
+                            </div>
+                        </div>
+        
+                        <div class="selos-seguranca">
+                            <div class="selo-item">
+                                <div class="selo-icon">🛡️</div>
+                                <div>
+                                    <span>Compra segura</span>
+                                    <p>Seus dados protegidos</p>
+                                </div>
+                            </div>
+                            <div class="selo-item">
+                                <div class="selo-icon">🚚</div>
+                                <div>
+                                    <span>Entrega para todo o Brasil</span>
+                                    <p>Com rastreamento</p>
+                                </div>
+                            </div>
+                            <div class="selo-item">
+                                <div class="selo-icon">🎔</div>
+                                <div>
+                                    <span>Suporte especializado</span>
+                                    <p>Tire suas dúvidas com a gente</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        
+
+        <!-- FRASE CONCEITUAL -->
+        <div class="brand-phrase-container">
+            <p class="brand-phrase">cicly 🎔<br><span class="brand-subphrase">cuidado em todos os momentos</span></p>
+        </div>
+
+        <!-- BANNER INFERIOR DE VANTAGENS -->
+        <div class="vantagens-banner">
+            <div class="vantagem-card">
+                <span>🚚 Frete rápido e seguro</span>
+            </div>
+            <div class="vantagem-card">
+                <span>🛡️ Compra segura e protegida</span>
+            </div>
+            <div class="vantagem-card">
+                <span>🎔 Atendimento humanizado e sempre à disposição</span>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER DA MARCA -->
+    <footer>
+        <div class="footer-logo-links">
+            <span class="footer-brand">cicly</span>
+            <div class="footer-links">
+                <a href="#">Início</a>
+                <a href="#">Produtos</a>
+                <a href="#">Categorias</a>
+                <a href="#">Sobre nós</a>
+                <a href="#">Contato</a>
+            </div>
+        </div>
+        <div>© 2026 Cicly. Todos os direitos reservados.</div>
+    </footer>
+
+    <!-- Lógica de programação separada -->
+    <script src="script.js"></script>
+</body>
+</html>

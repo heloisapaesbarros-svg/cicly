@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cicly | Pedido Confirmado</title>
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .sucesso-container {
+            max-width: 600px;
+            margin: 80px auto;
+            text-align: center;
+            background: #FFF;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 50px 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+        }
+        .sucesso-icon {
+            font-size: 60px;
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+        .sucesso-title {
+            font-family: 'Playfair Display', serif;
+            color: var(--cicly-pink);
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+        .sucesso-texto {
+            font-size: 15px;
+            color: var(--cicly-text-dark);
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+        .pedido-info-box {
+            background-color: var(--bg-gray);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 35px;
+            text-align: left;
+        }
+        .info-linha {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            margin-bottom: 10px;
+        }
+        .info-linha:last-child {
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <h1 class="brand-logo" style="cursor: pointer;" onclick="window.location.href='index.html'">cicly🎔</h1>
+        </div>
+    </header>
+
+    <main>
+        <div class="sucesso-container">
+            <div class="sucesso-icon">✓</div>
+            <h2 class="sucesso-title">Pedido Realizado!</h2>
+            <p class="sucesso-texto">
+                Obrigado por comprar na <strong>Cicly</strong>. Seu pagamento foi processado com segurança e estamos preparando seus produtos com todo o cuidado que você merece.
+            </p>
+
+            <div class="pedido-info-box">
+                <div class="info-linha">
+                    <span style="color: var(--cicly-text-light);">Código do pedido:</span>
+                    <span style="font-weight: 600;" id="codigo-pedido">#CY-84920</span>
+                </div>
+                <div class="info-linha">
+                    <span style="color: var(--cicly-text-light);">Status:</span>
+                    <span style="color: #4CAF50; font-weight: 600;">Preparando envio</span>
+                </div>
+                <div class="info-linha">
+                    <span style="color: var(--cicly-text-light);">Valor pago:</span>
+                    <span style="font-weight: 600;" id="valor-pago-sucesso">R\$ 146,50</span>
+                </div>
+            </div>
+
+            <button class="btn-finalizar" onclick="window.location.href='index.html'">Voltar para a Loja</button>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Recupera o valor final pago para exibir na tela de sucesso
+            const totalPago = localStorage.getItem('cicly_total_carrinho') || "R\$ 146,50";
+            document.getElementById('valor-pago-sucesso').innerText = totalPago;
+            
+            // Gera um número de pedido aleatório para simular um sistema real
+            const numeroAleatorio = Math.floor(10000 + Math.random() * 90000);
+            document.getElementById('codigo-pedido').innerText = `#CY-${numeroAleatorio}`;
+        });
+    </script>
+</body>
+</html>

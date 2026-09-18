@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cicly | Pagamento Seguro</title>
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <h1 class="brand-logo" style="cursor: pointer;" onclick="window.location.href='index.html'">cicly🎔</h1>
+        </div>
+        <div class="checkout-step-indicator">
+            <span style="color: var(--cicly-text-light);">Carrinho</span> ➔ <span style="color: var(--cicly-pink); font-weight: 600;">Pagamento</span>
+        </div>
+    </header>
+
+    <main>
+        <div class="carrinho-header">
+            <h2 class="carrinho-title">Finalizar seu Pedido 🎔</h2>
+            <a href="index.html" class="continue-link">← Voltar ao carrinho</a>
+        </div>
+
+        <div class="carrinho-layout">
+            <!-- COLUNA ESQUERDA: FORMULÁRIO DE CHECKOUT -->
+            <div class="produtos-coluna">
+                <div class="form-secao">
+                    <h3 class="form-secao-title">1. Dados de Entrega</h3>
+                    <div class="form-grid">
+                        <input type="text" class="input-cicly text-full" placeholder="Nome Completo">
+                        <input type="text" class="input-cicly" placeholder="CEP">
+                        <input type="text" class="input-cicly text-two-thirds" placeholder="Endereço">
+                        <input type="text" class="input-cicly" placeholder="Número">
+                        <input type="text" class="input-cicly" placeholder="Bairro">
+                        <input type="text" class="input-cicly" placeholder="Cidade">
+                        <input type="text" class="input-cicly" placeholder="Estado">
+                    </div>
+                </div>
+
+                <div class="form-secao" style="margin-top: 30px;">
+                    <h3 class="form-secao-title">2. Forma de Pagamento</h3>
+                    <div class="form-grid">
+                        <input type="text" class="input-cicly text-full" placeholder="Número do Cartão">
+                        <input type="text" class="input-cicly text-two-thirds" placeholder="Nome impresso no cartão">
+                        <input type="text" class="input-cicly" placeholder="Validade (MM/AA)">
+                        <input type="text" class="input-cicly" placeholder="CVV">
+                    </div>
+                </div>
+            </div>
+
+            <!-- COLUNA DIREITA: RESUMO SIMPLIFICADO -->
+            <div class="resumo-card">
+                <h3 class="resumo-title">Revisão do Pedido</h3>
+                
+                <div class="resumo-linha">
+                    <span>Total dos itens</span>
+                    <span id="checkout-subtotal">R\$ 146,50</span>
+                </div>
+                
+                <div class="resumo-linha">
+                    <span>Frete</span>
+                    <span class="frete-gratis-status">Grátis</span>
+                </div>
+
+                <div class="total-linha">
+                    <span class="total-label">Total a pagar</span>
+                    <span class="total-valor" id="checkout-total">R\$ 146,50</span>
+                </div>
+
+                <button class="btn-finalizar" onclick="confirmarPagamento()">Confirmar e Pagar R\$ 146,50</button>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Recupera os valores salvos temporariamente para exibir o total correto
+        document.addEventListener("DOMContentLoaded", () => {
+            const totalSalvo = localStorage.getItem('cicly_total_carrinho') || "R\$ 146,50";
+            document.getElementById('checkout-subtotal').innerText = totalSalvo;
+            document.getElementById('checkout-total').innerText = totalSalvo;
+            document.querySelector('.btn-finalizar').innerText = `Confirmar e Pagar ${totalSalvo}`;
+        });
+
+        function confirmarPagamento() {
+    // Redireciona diretamente para a tela de confirmação de sucesso
+    window.location.href = 'sucesso.html';
+}
+
+    </script>
+</body>
+</html>

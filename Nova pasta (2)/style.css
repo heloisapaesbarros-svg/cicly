@@ -1,0 +1,490 @@
+/* PALETA DE CORES E VARIÁVEIS OFICIAIS */
+:root {
+    --cicly-pink: #E95280;
+    --cicly-light-pink: #FFF0F4;
+    --cicly-text-dark: #4A4A4A;
+    --cicly-text-light: #7E7E7E;
+    --bg-gray: #FAFAFA;
+    --border-color: #F0F0F0;
+}
+
+body {
+    background-color: #FFFFFF;
+    color: var(--cicly-text-dark);
+    -webkit-font-smoothing: antialiased;
+}
+
+/* NAVBAR PRINCIPAL */
+header {
+    width: 100%;
+    border-bottom: 1px solid var(--border-color);
+    padding: 15px 10%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #FFF;
+}
+
+.brand-logo {
+    font-family: 'Playfair Display', serif;
+    color: var(--cicly-pink);
+    font-size: 36px;
+    font-weight: bold;
+    letter-spacing: -1px;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--cicly-text-light);
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+nav ul li a:hover {
+    color: var(--cicly-pink);
+}
+
+.search-bar-container {
+    position: relative;
+    width: 280px;
+}
+
+.search-bar-container input {
+    width: 100%;
+    background-color: var(--bg-gray);
+    border: 1px solid transparent;
+    padding: 10px 15px 10px 40px;
+    border-radius: 25px;
+    font-size: 13px;
+    outline: none;
+}
+
+.search-bar-container::before {
+    content: "🔍";
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 14px;
+    opacity: 0.4;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.cart-icon-container {
+    position: relative;
+}
+
+.cart-badge {
+    position: absolute;
+    top: -5px;
+    right: -8px;
+    background-color: var(--cicly-pink);
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ÁREA DO CONTEÚDO */
+main {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 40px 5%;
+}
+
+.carrinho-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 30px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 15px;
+}
+
+.carrinho-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    color: var(--cicly-pink);
+    font-weight: 400;
+}
+
+.continue-link {
+    color: var(--cicly-pink);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.carrinho-layout {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 40px;
+    align-items: start;
+}
+
+/* TABELA DE PRODUTOS */
+.produtos-coluna {
+    display: flex;
+    flex-direction: column;
+}
+
+.tabela-header {
+    display: grid;
+    grid-template-columns: 3fr 1fr 1fr;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--cicly-text-light);
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.tabela-header div:nth-child(2), .tabela-header div:nth-child(3) {
+    text-align: center;
+}
+
+.produto-item {
+    display: grid;
+    grid-template-columns: 3fr 1fr 1fr;
+    align-items: center;
+    padding: 25px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.produto-info {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.produto-img-wrapper {
+    width: 85px;
+    height: 85px;
+    background-color: var(--cicly-light-pink);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+}
+
+.placeholder-prod {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);
+    border-radius: 4px;
+    opacity: 0.7;
+}
+
+.produto-detalhes h3 {
+    font-size: 15px;
+    color: var(--cicly-pink);
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.produto-detalhes p {
+    font-size: 12px;
+    color: var(--cicly-text-light);
+    line-height: 1.4;
+    max-width: 280px;
+}
+
+.produto-preco-unitario {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--cicly-pink);
+    margin-top: 8px;
+}
+
+/* CONTROLES DE QUANTIDADE */
+.qtd-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.qtd-box {
+    display: flex;
+    align-items: center;
+    border: 1px solid #E0E0E0;
+    border-radius: 20px;
+    padding: 4px 12px;
+    background: #FFF;
+}
+
+.qtd-btn {
+    background: none;
+    border: none;
+    color: var(--cicly-pink);
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+}
+
+.qtd-num {
+    font-size: 14px;
+    font-weight: 500;
+    width: 30px;
+    text-align: center;
+}
+
+/* PREÇOS INDIVIDUAIS */
+.preco-subtotal-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 20px;
+}
+
+.preco-total-item {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--cicly-pink);
+    width: 80px;
+    text-align: right;
+}
+
+.btn-remover {
+    background: none;
+    border: none;
+    color: var(--cicly-text-light);
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.btn-remover:hover {
+    color: var(--cicly-pink);
+}
+
+.limpar-carrinho-btn {
+    background: none;
+    border: none;
+    color: var(--cicly-text-light);
+    font-size: 13px;
+    cursor: pointer;
+    margin-top: 20px;
+    align-self: flex-start;
+}
+
+.limpar-carrinho-btn:hover {
+    color: var(--cicly-pink);
+    text-decoration: underline;
+}
+
+/* PAINEL DE RESUMO */
+.resumo-card {
+    background-color: #FFF;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 30px;
+}
+
+.resumo-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    color: var(--cicly-pink);
+    margin-bottom: 25px;
+}
+
+.resumo-linha {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.label-frete {
+    display: flex;
+    flex-direction: column;
+}
+
+.sub-label {
+    font-size: 11px;
+    color: var(--cicly-text-light);
+    margin-top: 2px;
+}
+
+.frete-gratis-status {
+    color: #4CAF50;
+    font-weight: 500;
+}
+
+.total-linha {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+}
+
+.total-label {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    color: var(--cicly-pink);
+}
+
+.total-valor {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--cicly-pink);
+}
+
+.btn-finalizar {
+    width: 100%;
+    background-color: var(--cicly-pink);
+    color: white;
+    border: none;
+    padding: 16px;
+    border-radius: 25px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(233, 82, 128, 0.2);
+}
+
+.cupom-box {
+    background-color: var(--bg-gray);
+    border-radius: 8px;
+    padding: 15px;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.cupom-text h4 {
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.cupom-text span {
+    font-size: 11px;
+    color: var(--cicly-pink);
+    cursor: pointer;
+}
+
+/* RECURSOS SEGURANÇA */
+.selos-seguranca {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    border-top: 1px solid var(--border-color);
+    padding-top: 20px;
+}
+
+.selo-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 12px;
+}
+
+.selo-item span {
+    font-weight: 600;
+}
+
+.selo-item p {
+    color: var(--cicly-text-light);
+    font-size: 11px;
+}
+
+.selo-icon {
+    font-size: 18px;
+    color: var(--cicly-pink);
+}
+
+/* DESIGN CONCEITUAL INFERIOR */
+.brand-phrase-container {
+    text-align: center;
+    margin: 50px 0 20px 0;
+}
+
+.brand-phrase {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: var(--cicly-pink);
+    font-size: 24px;
+}
+
+.brand-subphrase {
+    font-size: 14px;
+    font-family: sans-serif;
+    font-style: normal;
+    color: var(--cicly-text-light);
+}
+
+.vantagens-banner {
+    background-color: var(--cicly-light-pink);
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 40px;
+    border-radius: 4px;
+}
+
+.vantagem-card {
+    font-size: 13px;
+    font-weight: 500;
+}
+
+/* FOOTER MARCA */
+footer {
+    border-top: 1px solid var(--border-color);
+    padding: 30px 10%;
+    margin-top: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    color: var(--cicly-text-light);
+}
+
+.footer-logo-links {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.footer-brand {
+    font-family: 'Playfair Display', serif;
+    color: var(--cicly-pink);
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: var(--cicly-text-light);
+    margin-right: 20px;
+}
+/* EFEITO VISUAL DO BOTÃO DE APLICAR CUPOM */
+.btn-cupom-action:hover {
+    opacity: 0.9;
+}

@@ -1,0 +1,169 @@
+*{
+    box-sizing:border-box;
+    font-family:Arial;
+    }
+    
+    
+    body{
+    
+    margin:0;
+    background:#fff5fa;
+    color:#d94d88;
+    
+    }
+    
+    
+    header{
+    
+    height:90px;
+    background:white;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 50px;
+    
+    }
+    
+    
+    header h1{
+    
+    font-size:40px;
+    font-family:cursive;
+    
+    }
+    
+    
+    nav a{
+    
+    margin:15px;
+    color:#999;
+    
+    }
+    
+    
+    main{
+    
+    min-height:700px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:100px;
+    
+    }
+    
+    
+    .marca{
+    
+    font-size:30px;
+    font-family:cursive;
+    
+    }
+    
+    
+    .card{
+    
+    background:white;
+    width:420px;
+    padding:40px;
+    border-radius:15px;
+    box-shadow:0 0 15px #f2bfd5;
+    
+    }
+    
+    
+    
+    h3{
+    
+    text-align:center;
+    font-size:28px;
+    
+    }
+    
+    
+    input{
+    
+    width:100%;
+    height:45px;
+    margin:8px 0;
+    border-radius:8px;
+    border:1px solid #efbfd4;
+    padding:10px;
+    
+    }
+    
+    
+    
+    button{
+    
+    width:100%;
+    height:45px;
+    border:0;
+    border-radius:25px;
+    background:#e85c92;
+    color:white;
+    font-weight:bold;
+    margin-top:15px;
+    
+    }
+    
+    
+    .google{
+    
+    background:white;
+    border:1px solid #e85c92;
+    color:#d94d88;
+    
+    }
+    
+    
+    a{
+    
+    color:#df4d88;
+    cursor:pointer;
+    
+    }
+    
+    
+    .check{
+    
+    display:flex;
+    justify-content:space-between;
+    font-size:12px;
+    
+    }
+    
+    
+    footer{
+    
+    height:100px;
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+    background:#fff0f6;
+    
+    }
+    
+    
+    @media(max-width:800px){
+    
+    main{
+    
+    flex-direction:column;
+    
+    }
+    
+    
+    .marca{
+    
+    display:none;
+    
+    }
+    
+    
+    .card{
+    
+    width:90%;
+    
+    }
+    
+    }
